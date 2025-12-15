@@ -31,3 +31,9 @@ spring.log
 
 # OneDrive temporary files
 ~$*
+
+# Documentation
+documentation/
+
+
+
