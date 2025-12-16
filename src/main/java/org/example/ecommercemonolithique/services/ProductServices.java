@@ -9,7 +9,8 @@ import java.util.NoSuchElementException;
 
 @Service
 public class ProductServices {
-    private final ProductRepository productRepository; // 'final' est une bonne pratique avec l'injection par constructeur
+    private final ProductRepository productRepository; // 'final' est une bonne pratique avec l'injection par
+                                                       // constructeur
 
     public ProductServices(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -46,5 +47,10 @@ public class ProductServices {
             throw new NoSuchElementException("Product not found with id: " + id);
         }
         productRepository.deleteById(id);
+    }
+
+    // calcul Promo
+    public double calculatePromo(Product product) {
+        return product.getPrice() - (product.getPrice() * 40 / 100);
     }
 }

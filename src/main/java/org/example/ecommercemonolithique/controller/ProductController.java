@@ -59,4 +59,16 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    // calcul Promo
+    @GetMapping("/promo/{id}")
+    public ResponseEntity<Double> calculatePromo(@PathVariable Long id) {
+        try {
+            Product product = productServices.getProductById(id);
+            double promo = productServices.calculatePromo(product);
+            return ResponseEntity.ok(promo);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
